@@ -53,7 +53,31 @@ router.patch('/:id', function(req, res) {
 
 // Delete
 router.delete('/:id',  function(req, res) {
-    res.status(200).json({  message: 'deleted the object'})
+    // capture ID
+    var id = req.params.id;
+
+    // Open File
+    const rawData = fs.readFileSync('data.json');
+    // Decode (parse) File
+    var students = JSON.parse(rawData);
+
+
+    // if found, delete
+    if (students.length > id) {
+        // modify the object
+        students.splice(id, 1);
+
+        
+        res.status(200).json({ message: 'success'});
+    }
+    else {
+        // fail
+        res.status(500).json({ message: 'failed'});
+    }
+        // show success
+
+    
+    // if not found, give error
 });
 
 
