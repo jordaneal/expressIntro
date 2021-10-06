@@ -9,8 +9,6 @@ router.get("/", function (req, res) {
     res.send("root");
 })
 
-
-
 // --------------------------------------------- end Endpoints
 
 module.exports = router;
